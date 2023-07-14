@@ -42,9 +42,9 @@ public class ScheduleServiceImpl implements ScheduleService {
     public void updateSchedule(ScheduleDto scheduleDto){
         Optional<Schedule> scheduleOptional = scheduleRepository.findById(scheduleDto.getId());
         scheduleOptional.ifPresent(schedule -> {
-            schedule.setEvent(schedule.getEvent());
-            schedule.setEventDate(schedule.getEventDate());
-            schedule.setEventTime(schedule.getEventTime());
+            schedule.setEvent(scheduleDto.getEvent());
+            schedule.setEventDate(scheduleDto.getEventDate());
+            schedule.setEventTime(scheduleDto.getEventTime());
             scheduleRepository.saveAndFlush(schedule);
         });
     }

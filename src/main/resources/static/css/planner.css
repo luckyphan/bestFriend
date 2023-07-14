@@ -1,0 +1,12 @@
+#schedule-edit-modal-title
+    font-size: 90px;
+
+#schedule-name-body
+    size:"7"
+
+#dayTimeBody
+    size:"20"
+
+.modal-lg {
+    width: 80% !important;
+}

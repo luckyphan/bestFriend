@@ -29,7 +29,7 @@ const handleSubmit = async (e) => {
          alert('Please fill out the name, day, and time of your pet\'s schedule :)')
          return
      }
-     console.log(eventDate.value)
+     console.log("this is the event date "+eventDate)
     let bodyObj = {
         event: eventName.value,
         eventDate: eventDate.value,
@@ -86,10 +86,11 @@ async function getSchedule(scheduleId){
 async function handleScheduleEdit(scheduleId){
     let bodyObj = {
         id: scheduleId,
-        event: event.value,
-        eventDate: eventDate.value,
-        eventTime: eventDate.value
+        event: eventNameBody.value,
+        eventDate: eventDateBody.value,
+        eventTime: eventDateBody.value
     }
+    console.log(bodyObj)
 
     await fetch(baseUrl, {
         method: "PUT",
@@ -146,7 +147,7 @@ const populateModal = (obj) =>{
     eventName.value = ""
     eventDate.value = ""
     eventName.value = obj.event
-    eventDate.value = (obj.eventDate).concat(obj.eventTime)
+    eventDate.value = (obj.eventDate).concat("T"+obj.eventTime)
     updateEventBtn.setAttribute('data-schedule-id', obj.id)
 }
 

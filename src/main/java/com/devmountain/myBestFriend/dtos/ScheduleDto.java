@@ -14,8 +14,8 @@ import java.util.Date;
 public class ScheduleDto implements Serializable {
     private Long id;
     private String event;
-    Date eventDate;
-    Date eventTime;
+    private Date eventDate;
+    private Date eventTime;
 
     public ScheduleDto(Schedule schedule){
         if(schedule.getId() != null){
@@ -25,10 +25,10 @@ public class ScheduleDto implements Serializable {
             this.event = schedule.getEvent();
         }
         if(schedule.getEventDate() != null){
-            this.eventDate = getEventDate();
+            this.eventDate = schedule.getEventDate();
         }
         if(schedule.getEventTime() != null){
-            this.eventTime = getEventTime();
+            this.eventTime = schedule.getEventTime();
         }
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
@@ -25,10 +26,10 @@ public class Schedule {
     private String event;
 
     @Temporal(TemporalType.DATE)
-    Date eventDate;
+    private Date eventDate;
 
     @Temporal(TemporalType.TIME)
-    Date eventTime;
+    private Date eventTime;
 
     @ManyToOne
     @JsonBackReference
@@ -42,7 +43,10 @@ public class Schedule {
             this.eventDate = scheduleDto.getEventDate();
         }
         if(scheduleDto.getEventTime() != null){
-            this.eventTime = scheduleDto.getEventTime();
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(scheduleDto.getEventTime());
+            calendar.add(Calendar.HOUR_OF_DAY, 4);
+            this.eventTime = calendar.getTime();
         }
     }
 
